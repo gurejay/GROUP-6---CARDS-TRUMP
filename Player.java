@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 /**
  * SYST 17796 Project Base code.
  * Students can modify and extend to implement their game.
@@ -8,42 +10,48 @@ package ca.sheridancollege.project;
 /**
  * A class that models each Player in the game. Players have an identifier, which should be unique.
  *
- * @author dancye
- * @author Paul Bonenfant Jan 2020
+ * @author Yatharth Gureja
+ July 9
+ * @author 
  */
 public abstract class Player {
 
-    private String name; //the unique name for this player
 
-    /**
-     * A constructor that allows you to set the player's unique ID
-     *
-     * @param name the unique ID to assign to this player.
-     */
+    private String name;
+    private List<Card> hand;
+
     public Player(String name) {
         this.name = name;
+        this.hand = new ArrayList<>();
     }
 
-    /**
-     * @return the player name
-     */
-    public String getName() {
-        return name;
+    public void addCard(Card card) {
+        hand.add(card);
     }
 
-    /**
-     * Ensure that the playerID is unique
-     *
-     * @param name the player name to set
-     */
-    public void setName(String name) {
-        this.name = name;
+    public int calculateHandValue() {
+        int value = 0;
+        for (Card card : hand) {
+            // Calculate the value of the card and add it to the total
+        }
+        return value;
     }
 
-    /**
-     * The method to be overridden when you subclass the Player class with your specific type of Player and filled in
-     * with logic to play your game.
-     */
-    public abstract void play();
+    // Other methods specific to the player
 
+    public void hit(Card card) {
+        addCard(card);
+    }
+
+    public void stand() {
+        // Player chooses to stand (take no more cards)
+    }
+
+    public void displayHand() {
+        System.out.println("Hand for " + name + ":");
+        for (Card card : hand) {
+            System.out.println(card.getRank() + " of " + card.getSuit());
+        }
+        System.out.println("Total value: " + calculateHandValue());
+    }
 }
