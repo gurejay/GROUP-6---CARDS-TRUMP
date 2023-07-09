@@ -16,40 +16,24 @@ import java.util.Collections;
  * @author Paul Bonenfant Jan 2020
  */
 public class GroupOfCards {
+    public static void main(String[] args) {
+        Game game = new Game();
 
-    //The group of cards, stored in an ArrayList
-    private ArrayList<Card> cards;
-    private int size;//the size of the grouping
+        // Initialize players
+        Player player1 = new Player("Player 1");
+        Player player2 = new Player("Player 2");
 
-    public GroupOfCards(int size) {
-        this.size = size;
+        // Add players to the game
+        game.addPlayer(player1);
+        game.addPlayer(player2);
+
+        // Deal initial cards
+        game.dealInitialCards();
+
+        // Perform game actions
+        // ...
+
+        // Determine the winner
+        game.determineWinner();
     }
-
-    /**
-     * A method that will get the group of cards as an ArrayList
-     *
-     * @return the group of cards.
-     */
-    public ArrayList<Card> getCards() {
-        return cards;
-    }
-
-    public void shuffle() {
-        Collections.shuffle(cards);
-    }
-
-    /**
-     * @return the size of the group of cards
-     */
-    public int getSize() {
-        return size;
-    }
-
-    /**
-     * @param size the max size for the group of cards
-     */
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-}//end class
+}
