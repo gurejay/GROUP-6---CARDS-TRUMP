@@ -16,43 +16,34 @@ import java.util.ArrayList;
  */
 public abstract class Game {
 
-    private final String name;//the title of the game
-    private ArrayList<Player> players;// the players of the game
+   private List<Player> players;
+    private List<Card> deck;
 
-    public Game(String name) {
-        this.name = name;
-        players = new ArrayList();
+    public Game() {
+        players = new ArrayList<>();
+        deck = new ArrayList<>();
+        // Initialize the deck of cards
     }
 
-    /**
-     * @return the name
-     */
-    public String getName() {
-        return name;
+    public void addPlayer(Player player) {
+        players.add(player);
     }
 
-    /**
-     * @return the players of this game
-     */
-    public ArrayList<Player> getPlayers() {
-        return players;
+    public void dealInitialCards() {
+        // Deal two cards to each player
     }
 
-    /**
-     * @param players the players of this game
-     */
-    public void setPlayers(ArrayList<Player> players) {
-        this.players = players;
+    public void handlePlayerAction(Player player, String action) {
+        // Handle the player's action (hit or stand)
     }
 
-    /**
-     * Play the game. This might be one method or many method calls depending on your game.
-     */
-    public abstract void play();
+    public void determineWinner() {
+        // Determine the winner of the game
+    }
 
-    /**
-     * When the game is over, use this method to declare and display a winning player.
-     */
-    public abstract void declareWinner();
+    public void displayGameStatus() {
+        // Display the current game status
+    }
 
-}//end class
+    // Other methods specific to the game
+}
