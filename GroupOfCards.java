@@ -1,39 +1,44 @@
-/**
- * SYST 17796 Project Base code.
- * Students can modify and extend to implement their game.
- * Add your name as an author and the date!
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package ca.sheridancollege.project;
-
-import java.util.ArrayList;
-import java.util.Collections;
+package blackjackgame;
 
 /**
- * A concrete class that represents any grouping of cards for a Game. HINT, you might want to subclass this more than
- * once. The group of cards has a maximum size attribute which is flexible for reuse.
  *
- * @author dancye
- * @author Paul Bonenfant Jan 2020
+ * @author hp
  */
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class GroupOfCards {
-    public static void main(String[] args) {
-        Game game = new Game();
+    private List<Card> cards;
+    private Random random;
 
-        // Initialize players
-        Player player1 = new Player("Player 1");
-        Player player2 = new Player("Player 2");
+    public GroupOfCards() {
+        cards = new ArrayList<>();
+        random = new Random();
+    }
 
-        // Add players to the game
-        game.addPlayer(player1);
-        game.addPlayer(player2);
+    public void addCard(Card card) {
+        cards.add(card);
+    }
 
-        // Deal initial cards
-        game.dealInitialCards();
+    public void shuffle() {
+        for (int i = cards.size() - 1; i > 0; i--) {
+            int j = random.nextInt(i + 1);
+            Card temp = cards.get(i);
+            cards.set(i, cards.get(j));
+            cards.set(j, temp);
+        }
+    }
 
-        // Perform game actions
-        // ...
-
-        // Determine the winner
-        game.determineWinner();
+    public Card dealCard() {
+        if (cards.isEmpty()) {
+            return null;
+        }
+        return cards.remove(0);
     }
 }
+
